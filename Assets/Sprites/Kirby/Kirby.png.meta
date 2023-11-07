@@ -236,7 +236,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kirby_6
+      name: Kirby_wall
       rect:
         serializedVersion: 2
         x: 131
@@ -698,15 +698,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kirby_28
+      name: Puff
       rect:
         serializedVersion: 2
         x: 243
         y: 2962
         width: 16
         height: 15
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -18333,7 +18333,6 @@ TextureImporter:
       Kirby_277: 631688013
       Kirby_278: 465142009
       Kirby_279: -1874058748
-      Kirby_28: -1083325161
       Kirby_280: -1393659696
       Kirby_281: 14245781
       Kirby_282: -2111156431
@@ -18685,7 +18684,6 @@ TextureImporter:
       Kirby_597: 324207750
       Kirby_598: 995151115
       Kirby_599: -1986417973
-      Kirby_6: 1988978486
       Kirby_60: -1707461592
       Kirby_600: 952732674
       Kirby_601: -551999889
@@ -19151,6 +19149,8 @@ TextureImporter:
       Kirby_Walk2: 1760552386
       Kirby_Walk3: -595757519
       Kirby_Walk4: 964016234
+      Kirby_wall: 1988978486
+      Puff: -1083325161
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

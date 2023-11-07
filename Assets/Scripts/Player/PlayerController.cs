@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     // Movement Variables
     [SerializeField] float moveSpeed = 5.0f;
     [SerializeField] float jumpForce = 300.0f;
+    [SerializeField] float flyForce = 150.0f;
 
     // Ground check stuff
     public bool isGrounded;
@@ -27,6 +28,9 @@ public class PlayerController : MonoBehaviour
     // Animations
     [SerializeField] bool isCrouching;
     [SerializeField] bool isSlideKicking;
+    [SerializeField] bool isFlying;
+    [SerializeField] float flyDelay = 0.2f;
+    float flyDelayTime = 0.0f;
     float slideKickDuration = 0.5f;
     float slideKickTime = 0f;
     [SerializeField] float slideMoveSpeed = 100.0f;
@@ -79,13 +83,28 @@ public class PlayerController : MonoBehaviour
             rb.sharedMaterial = pmSlippery;
 
         // Jump
-        if (isGrounded && !isCrouching && Input.GetButtonDown("Jump"))
+        if (isGrounded && !isCrouching && !isFlying && Input.GetButtonDown("Jump"))
         {
             rb.AddForce(Vector2.up * jumpForce);
         }
+        else if ((!isGrounded || isFlying) && Input.GetButton("Jump"))
+        {
+            flyDelayTime += Time.deltaTime;
+            if (flyDelayTime >= flyDelay)
+            {
+                isFlying = true;
+                rb.velocity = new Vector2(rb.velocity.x, Vector2.up.y * flyForce);
+            }
+            
+        }
+
+        else if (!isGrounded && !Input.GetButtonDown("Jump"))
+        {
+            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y);
+        }
 
         // Crouching
-        if (isGrounded && vInput < -0.1 && !isCrouching)
+        if (isGrounded && !isFlying && vInput < -0.1 && !isCrouching)
         {
             isCrouching = true;
             //rb.velocity = Vector2.zero;
@@ -93,6 +112,15 @@ public class PlayerController : MonoBehaviour
         else if (isGrounded && vInput >= 0 && vInput < 0.1 && !isSlideKicking)
         {
             isCrouching = false;
+        }
+
+        /// B button ///
+        
+        // flying exhale
+        if (isFlying && Input.GetButtonDown("Fire1"))
+        {
+            Debug.Log("Exhale");
+            isFlying = false;
         }
 
         // Slide Kick
@@ -142,5 +170,14 @@ public class PlayerController : MonoBehaviour
         anim.SetFloat("hInput", Mathf.Abs(hInput));
         anim.SetBool("isCrouching", isCrouching);
         anim.SetBool("isSlideKicking", isSlideKicking);
+        anim.SetBool("isFlying", isFlying);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Item")
+        {
+            Destroy(collision.gameObject);
+        }
     }
 }

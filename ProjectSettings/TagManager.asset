@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Item
   layers:
   - Default
   - TransparentFX
@@ -43,6 +44,9 @@ TagManager:
     locked: 0
   - name: Level
     uniqueID: 4191169143
+    locked: 0
+  - name: Items
+    uniqueID: 1132799599
     locked: 0
   - name: Player
     uniqueID: 1926384893
