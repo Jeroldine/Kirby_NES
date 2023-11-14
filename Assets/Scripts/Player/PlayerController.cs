@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D rb;
     SpriteRenderer sr;
     Animator anim;
+    //AnimatorClipInfo[] currentClipInfo;
 
     // Pysics Materials
     [SerializeField] PhysicsMaterial2D pmRough;
@@ -18,6 +19,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float moveSpeed = 5.0f;
     [SerializeField] float jumpForce = 300.0f;
     [SerializeField] float flyForce = 150.0f;
+    [SerializeField] float extraGrav = 10.0f;
 
     // Ground check stuff
     public bool isGrounded;
@@ -29,11 +31,26 @@ public class PlayerController : MonoBehaviour
     [SerializeField] bool isCrouching;
     [SerializeField] bool isSlideKicking;
     [SerializeField] bool isFlying;
+    [SerializeField] bool isFlyingTrans;
+    [SerializeField] bool isFlyExhaling;
+    [SerializeField] bool isInhaling;
+    [SerializeField] bool isInhalingTrans;
+    [SerializeField] bool isFull;
     [SerializeField] float flyDelay = 0.2f;
+    bool startInhaleTimer;
+    bool startFlyExhaleTimer;
+
+    float flyExhaleDuration;
+    float inhaleDuration;
+    float stopInhaleDuration;
     float flyDelayTime = 0.0f;
+    float inhaleDelay;
+    float inhaleDelayTime = 0.0f;
+    float flyExhaleDelayTime = 0.0f;
     float slideKickDuration = 0.5f;
     float slideKickTime = 0f;
     [SerializeField] float slideMoveSpeed = 100.0f;
+
 
     // Start is called before the first frame update
     void Start()
@@ -68,6 +85,8 @@ public class PlayerController : MonoBehaviour
             obj.name = "GroundCheck";
             groundCheck = obj.transform;
         }
+
+        GetAnimClipDurations();
     }
 
     // Update is called once per frame
@@ -77,17 +96,22 @@ public class PlayerController : MonoBehaviour
         float vInput = Input.GetAxisRaw("Vertical");
         isGrounded = Physics2D.OverlapCircle(groundCheck.transform.position, groundCheckRadius, isGroundLayer);
 
+        if (!isFlying)
+        {
+            rb.AddForce(Vector2.down * extraGrav * Time.deltaTime);
+        }
+
         if (isGrounded)
             rb.sharedMaterial = pmRough;
         else
             rb.sharedMaterial = pmSlippery;
 
         // Jump
-        if (isGrounded && !isCrouching && !isFlying && Input.GetButtonDown("Jump"))
+        if (isGrounded && !isCrouching && !isInhaling && !isFlying && Input.GetButtonDown("Jump"))
         {
-            rb.AddForce(Vector2.up * jumpForce);
+            rb.AddForce(Vector2.up * jumpForce );
         }
-        else if ((!isGrounded || isFlying) && Input.GetButton("Jump"))
+        else if ((!isGrounded || isFlying) && !isInhaling && Input.GetButton("Jump"))
         {
             flyDelayTime += Time.deltaTime;
             if (flyDelayTime >= flyDelay)
@@ -97,14 +121,13 @@ public class PlayerController : MonoBehaviour
             }
             
         }
-
         else if (!isGrounded && !Input.GetButtonDown("Jump"))
         {
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y);
         }
 
         // Crouching
-        if (isGrounded && !isFlying && vInput < -0.1 && !isCrouching)
+        if (isGrounded && !isFlying && vInput < -0.1 && !isCrouching && !isInhaling)
         {
             isCrouching = true;
             //rb.velocity = Vector2.zero;
@@ -116,11 +139,60 @@ public class PlayerController : MonoBehaviour
 
         /// B button ///
         
+        // inhale
+        if (!isFlying && !isInhaling && !isCrouching && !isFull && Input.GetButtonDown("Fire1"))
+        {
+            isInhaling = true;
+            isInhalingTrans = true;
+            rb.velocity = Vector2.zero;
+        }
+        else if (isInhaling && Input.GetButtonUp("Fire1"))
+        {
+            if (anim.GetCurrentAnimatorClipInfo(0)[0].clip.name == "Inhale")
+            {
+                inhaleDelay = inhaleDuration + stopInhaleDuration;
+                Debug.Log("Long inhale delay" + inhaleDelay);
+            }
+            else if (anim.GetCurrentAnimatorClipInfo(0)[0].clip.name == "LongInhale")
+            {
+                inhaleDelay = stopInhaleDuration;
+                Debug.Log("Short inhale delay" + inhaleDelay);
+            }
+            startInhaleTimer = true;
+            isInhalingTrans = false;
+            Debug.Log("StoppingInhale");
+        }
+        if (startInhaleTimer)
+        {
+            inhaleDelayTime += Time.deltaTime;
+            if (inhaleDelayTime >= inhaleDelay)
+            {
+                isInhaling = false;
+                startInhaleTimer = false;
+                inhaleDelay = 0;
+                inhaleDelayTime = 0;
+            }
+        }
+
         // flying exhale
         if (isFlying && Input.GetButtonDown("Fire1"))
         {
             Debug.Log("Exhale");
+            isFlyExhaling = true;
+            startFlyExhaleTimer = true;
             isFlying = false;
+            flyDelayTime = 0;
+        }
+        else if (startFlyExhaleTimer)
+        {
+            rb.velocity = Vector2.zero;
+            flyExhaleDelayTime += Time.deltaTime;
+            if (flyExhaleDelayTime >= flyExhaleDuration)
+            {
+                isFlyExhaling = false;
+                flyExhaleDelayTime = 0;
+                startFlyExhaleTimer = false;
+            }
         }
 
         // Slide Kick
@@ -151,7 +223,7 @@ public class PlayerController : MonoBehaviour
         }
 
         // Ground Movement
-        if (!isCrouching)
+        if (!isCrouching && !isInhaling)
         {
             Vector2 moveDirection = new Vector2(hInput * moveSpeed, rb.velocity.y);
             rb.velocity = moveDirection;
@@ -159,7 +231,7 @@ public class PlayerController : MonoBehaviour
       
 
         // Flipping the sprite
-        if (hInput > 0 && !isSlideKicking)
+        if (hInput > 0 && !isSlideKicking && !isInhaling)
             sr.flipX = false;
         else if (hInput < 0 && !isSlideKicking)
             sr.flipX = true;
@@ -171,6 +243,8 @@ public class PlayerController : MonoBehaviour
         anim.SetBool("isCrouching", isCrouching);
         anim.SetBool("isSlideKicking", isSlideKicking);
         anim.SetBool("isFlying", isFlying);
+        anim.SetBool("isInhaling", isInhalingTrans);
+        anim.SetBool("isFlyExhaling", isFlyExhaling);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -178,6 +252,25 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.tag == "Item")
         {
             Destroy(collision.gameObject);
+        }
+    }
+
+    private void GetAnimClipDurations()
+    {
+        foreach(AnimationClip clip in anim.runtimeAnimatorController.animationClips)
+        {
+            switch(clip.name)
+            {
+                case "Inhale":
+                    inhaleDuration = clip.length;
+                    break;
+                case "StopInhale":
+                    stopInhaleDuration = clip.length;
+                    break;
+                case "FlyExhale":
+                    flyExhaleDuration = clip.length;
+                    break;
+            }
         }
     }
 }

@@ -719,7 +719,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kirby_29
+      name: Kirby_Inhale1
       rect:
         serializedVersion: 2
         x: 1
@@ -740,7 +740,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kirby_30
+      name: Kirby_Inhale2
       rect:
         serializedVersion: 2
         x: 21
@@ -761,7 +761,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kirby_31
+      name: Kirby_IdleFull
       rect:
         serializedVersion: 2
         x: 58
@@ -782,7 +782,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kirby_32
+      name: Kirby_WalkFull1
       rect:
         serializedVersion: 2
         x: 92
@@ -803,7 +803,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kirby_33
+      name: Kirby_WalkFull2
       rect:
         serializedVersion: 2
         x: 120
@@ -824,7 +824,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kirby_34
+      name: Kirby_WalkFull3
       rect:
         serializedVersion: 2
         x: 147
@@ -845,7 +845,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kirby_35
+      name: Kirby_ExhaleFull1
       rect:
         serializedVersion: 2
         x: 180
@@ -866,7 +866,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kirby_36
+      name: Kirby_ExhaleFull2
       rect:
         serializedVersion: 2
         x: 208
@@ -887,7 +887,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kirby_37
+      name: Kirby_ExhaleFull3
       rect:
         serializedVersion: 2
         x: 236
@@ -908,7 +908,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kirby_38
+      name: Kirby_ExhaleFull4
       rect:
         serializedVersion: 2
         x: 256
@@ -17708,7 +17708,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kirby_1389
+      name: InhaleDust
       rect:
         serializedVersion: 2
         x: 44
@@ -17760,6 +17760,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      InhaleDust: -1124146714
       Kirby_0: 1918229408
       Kirby_10: 240725563
       Kirby_100: 299935606
@@ -18191,7 +18192,6 @@ TextureImporter:
       Kirby_1386: -1994428721
       Kirby_1387: 1450432814
       Kirby_1388: -1031511448
-      Kirby_1389: -1124146714
       Kirby_139: 1937455476
       Kirby_140: -467357043
       Kirby_141: -1262397979
@@ -18343,7 +18343,6 @@ TextureImporter:
       Kirby_287: 1670908989
       Kirby_288: -676079290
       Kirby_289: 1999934427
-      Kirby_29: -1335350018
       Kirby_290: 1020802208
       Kirby_291: -636900192
       Kirby_292: 1434842349
@@ -18354,7 +18353,6 @@ TextureImporter:
       Kirby_297: -832957698
       Kirby_298: 1892091042
       Kirby_299: -1941967967
-      Kirby_30: 2018010252
       Kirby_300: 1241347731
       Kirby_301: 577157858
       Kirby_302: 1192652512
@@ -18365,7 +18363,6 @@ TextureImporter:
       Kirby_307: 852154560
       Kirby_308: -2026133878
       Kirby_309: 376335466
-      Kirby_31: 1864464621
       Kirby_310: -415152825
       Kirby_311: -1117891406
       Kirby_312: 470474419
@@ -18376,7 +18373,6 @@ TextureImporter:
       Kirby_317: -747774982
       Kirby_318: -285725782
       Kirby_319: 768989903
-      Kirby_32: 1190670399
       Kirby_320: -546949837
       Kirby_321: -108810391
       Kirby_322: -127242935
@@ -18387,7 +18383,6 @@ TextureImporter:
       Kirby_327: 262013716
       Kirby_328: 1901183785
       Kirby_329: -173731952
-      Kirby_33: -1891636173
       Kirby_330: 115639359
       Kirby_331: -614145697
       Kirby_332: 1935547057
@@ -18398,7 +18393,6 @@ TextureImporter:
       Kirby_337: 190199059
       Kirby_338: -1986216972
       Kirby_339: 739594285
-      Kirby_34: 64451284
       Kirby_340: 365354686
       Kirby_341: -639863115
       Kirby_342: -523381692
@@ -18409,7 +18403,6 @@ TextureImporter:
       Kirby_347: 58189896
       Kirby_348: 133765873
       Kirby_349: -1547370611
-      Kirby_35: -1049278862
       Kirby_350: -665122437
       Kirby_351: -1754992411
       Kirby_352: 1736354553
@@ -18420,7 +18413,6 @@ TextureImporter:
       Kirby_357: 1314549478
       Kirby_358: -254557632
       Kirby_359: -148473130
-      Kirby_36: -1452044089
       Kirby_360: 564166530
       Kirby_361: -2125049935
       Kirby_362: 11011061
@@ -18431,7 +18423,6 @@ TextureImporter:
       Kirby_367: -1737122682
       Kirby_368: -157427593
       Kirby_369: 136918626
-      Kirby_37: -1847507384
       Kirby_370: 1975254330
       Kirby_371: -1771716562
       Kirby_372: -57421889
@@ -18442,7 +18433,6 @@ TextureImporter:
       Kirby_377: 1803722533
       Kirby_378: 97391655
       Kirby_379: 986322759
-      Kirby_38: -1461863801
       Kirby_380: 294942884
       Kirby_381: -2103434314
       Kirby_382: 104259897
@@ -19127,6 +19117,10 @@ TextureImporter:
       Kirby_999: 73034613
       Kirby_Crouch: 1301268039
       Kirby_Dive: -1209785688
+      Kirby_ExhaleFull1: -1049278862
+      Kirby_ExhaleFull2: -1452044089
+      Kirby_ExhaleFull3: -1847507384
+      Kirby_ExhaleFull4: -1461863801
       Kirby_Fall1: -877691791
       Kirby_Fall2: 1401151538
       Kirby_Fall3: -233012341
@@ -19139,6 +19133,9 @@ TextureImporter:
       Kirby_Fly_Exhale4: -1419892317
       Kirby_Idle1: 69150367
       Kirby_Idle2: -2106330066
+      Kirby_IdleFull: 1864464621
+      Kirby_Inhale1: -1335350018
+      Kirby_Inhale2: 2018010252
       Kirby_Jump: 51264440
       Kirby_Liftoff1: 1434258558
       Kirby_Liftoff2: -1415738752
@@ -19149,6 +19146,9 @@ TextureImporter:
       Kirby_Walk2: 1760552386
       Kirby_Walk3: -595757519
       Kirby_Walk4: 964016234
+      Kirby_WalkFull1: 1190670399
+      Kirby_WalkFull2: -1891636173
+      Kirby_WalkFull3: 64451284
       Kirby_wall: 1988978486
       Puff: -1083325161
   mipmapLimitGroupName: 
