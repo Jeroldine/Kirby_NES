@@ -194,7 +194,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KirbyItems_4
+      name: Candy
       rect:
         serializedVersion: 2
         x: 89
@@ -603,6 +603,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      Candy: 1665300081
       KirbyItems_10: 1186171369
       KirbyItems_11: 457397650
       KirbyItems_12: -1807528731
@@ -617,7 +618,6 @@ TextureImporter:
       KirbyItems_20: 2059357733
       KirbyItems_21: -454216229
       KirbyItems_22: -1051612436
-      KirbyItems_4: 1665300081
       KirbyItems_5: -203833502
       KirbyItems_6: -1594911232
       KirbyItems_7: 1315402933

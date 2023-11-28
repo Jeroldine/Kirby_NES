@@ -21,6 +21,41 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float flyForce = 150.0f;
     [SerializeField] float extraGrav = 10.0f;
 
+    // Health and lives
+    int maxHP = 5;
+    private int _currentHP = 4;
+    public int currentHP
+    {
+        get { return _currentHP; }
+        set
+        {
+            _currentHP = value;
+            if (_currentHP > maxHP)
+                _currentHP = maxHP;
+
+            Debug.Log("HP has been set to: " + _currentHP.ToString());
+        }
+    }
+
+    int maxLives = 4;
+    private int _currentLives = 3;
+    public int currentLives
+    {
+        get { return _currentLives; }
+        set
+        {
+            _currentLives = value;
+            if (_currentLives > maxLives)
+                _currentLives = maxLives;
+
+            Debug.Log("Lives has been set to: " + _currentLives.ToString());
+        }
+    }
+
+    // Invincibility
+    [SerializeField] bool isInvincible;
+    Coroutine invincibilityChange;
+
     // Ground check stuff
     public bool isGrounded;
     public Transform groundCheck;
@@ -249,10 +284,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Item")
-        {
-            Destroy(collision.gameObject);
-        }
+        
     }
 
     private void GetAnimClipDurations()
@@ -272,5 +304,26 @@ public class PlayerController : MonoBehaviour
                     break;
             }
         }
+    }
+
+    public void StartInvincibilityChange(float duration)
+    {
+        if (invincibilityChange == null)
+            invincibilityChange = StartCoroutine(InvincibilityChange(duration));
+        else
+        {
+            StopCoroutine(invincibilityChange);
+            invincibilityChange = null;
+            isInvincible = false;
+            invincibilityChange = StartCoroutine(InvincibilityChange(duration));
+        }
+    }
+
+    IEnumerator InvincibilityChange(float duration)
+    {
+        isInvincible = true;
+        yield return new WaitForSeconds(duration);
+        isInvincible = false;
+        invincibilityChange = null;
     }
 }
