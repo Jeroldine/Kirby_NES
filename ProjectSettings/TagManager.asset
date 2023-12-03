@@ -7,8 +7,12 @@ TagManager:
   - Item
   - Enemy
   - EnemyProjectile
-  - PlayerProjectile
   - Level
+  - EndOfLevel
+  - PuffProjectile
+  - StarProjectile
+  - Barrier
+  - Radar
   layers:
   - Default
   - TransparentFX

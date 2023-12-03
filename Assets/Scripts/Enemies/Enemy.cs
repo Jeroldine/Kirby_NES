@@ -11,6 +11,8 @@ public class Enemy : MonoBehaviour
     protected int health;
     public int maxHealth;
 
+
+
     public virtual void Start()
     {
         sr = GetComponent<SpriteRenderer>();
@@ -21,12 +23,23 @@ public class Enemy : MonoBehaviour
         health = maxHealth;
     }
 
-    public virtual void TakeDamage(int damage)
+    public virtual void TakeDamage(int damage, int proj)
     {
         health -= damage;
 
         if (health <= 0)
-            anim.SetTrigger("Death");
+            switch (proj)
+            {
+                case 0:
+                    anim.SetTrigger("PuffDeath");
+                    Destroy(transform.parent.gameObject, 0.3f);
+                    break;
+                case 1:
+                    anim.SetTrigger("StarDeath");
+                    Destroy(transform.parent.gameObject, 0.333f);
+                    break;
+
+            }
     }
 
 }

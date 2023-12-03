@@ -27,7 +27,7 @@ public class Pickups : MonoBehaviour
                     pc.currentLives++;
                     break;
                 case PickupType.hpFull:
-                    pc.currentHP += 5;
+                    pc.currentHP += 6;
                     break;
                 case PickupType.hpPortion:
                     pc.currentHP += 2;

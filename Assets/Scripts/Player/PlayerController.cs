@@ -9,6 +9,9 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D rb;
     SpriteRenderer sr;
     Animator anim;
+    EnemyTurret currentET;
+    Shoot shoot;
+
     //AnimatorClipInfo[] currentClipInfo;
 
     // Pysics Materials
@@ -22,7 +25,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float extraGrav = 10.0f;
 
     // Health and lives
-    int maxHP = 5;
+    int maxHP = 6;
     private int _currentHP = 4;
     public int currentHP
     {
@@ -52,9 +55,18 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    // Ground inhaling mechanic
+    [SerializeField] GameObject inhaleBoxPrefab;
+    [SerializeField] Transform inhaleBoxR;
+    [SerializeField] Transform inhaleBoxL;
+    GameObject ib;
+
     // Invincibility
     [SerializeField] bool isInvincible;
     Coroutine invincibilityChange;
+
+    // end of level
+    bool isAtEndOfLevel;
 
     // Ground check stuff
     public bool isGrounded;
@@ -94,6 +106,8 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
+        shoot = GetComponent<Shoot>();
+        ib = null;
 
         // checking variables for dirty data
         if (rb == null) Debug.Log("No RigidBody reference");
@@ -172,6 +186,12 @@ public class PlayerController : MonoBehaviour
             isCrouching = false;
         }
 
+        // leave level
+        if (isAtEndOfLevel && vInput > 0.1)
+        {
+            Debug.Log("You will leave the level when implemented.");
+        }
+
         /// B button ///
         
         // inhale
@@ -180,6 +200,16 @@ public class PlayerController : MonoBehaviour
             isInhaling = true;
             isInhalingTrans = true;
             rb.velocity = Vector2.zero;
+            if (sr.flipX)
+            {
+                ib = Instantiate(inhaleBoxPrefab, inhaleBoxL.position, inhaleBoxL.rotation);
+                ib.GetComponent<ibFollow>().SetFollowPos(inhaleBoxL);
+            }
+            else
+            {
+                ib = Instantiate(inhaleBoxPrefab, inhaleBoxR.position, inhaleBoxR.rotation);
+                ib.GetComponent<ibFollow>().SetFollowPos(inhaleBoxR);
+            }   
         }
         else if (isInhaling && Input.GetButtonUp("Fire1"))
         {
@@ -188,14 +218,16 @@ public class PlayerController : MonoBehaviour
                 inhaleDelay = inhaleDuration + stopInhaleDuration;
                 Debug.Log("Long inhale delay" + inhaleDelay);
             }
-            else if (anim.GetCurrentAnimatorClipInfo(0)[0].clip.name == "LongInhale")
+            /*else if (anim.GetCurrentAnimatorClipInfo(0)[0].clip.name == "LongInhale")
             {
                 inhaleDelay = stopInhaleDuration;
                 Debug.Log("Short inhale delay" + inhaleDelay);
-            }
+            }*/
             startInhaleTimer = true;
             isInhalingTrans = false;
             Debug.Log("StoppingInhale");
+            Destroy(ib, inhaleDelay);
+            ib = null;
         }
         if (startInhaleTimer)
         {
@@ -208,7 +240,7 @@ public class PlayerController : MonoBehaviour
                 inhaleDelayTime = 0;
             }
         }
-
+        
         // flying exhale
         if (isFlying && Input.GetButtonDown("Fire1"))
         {
@@ -217,6 +249,7 @@ public class PlayerController : MonoBehaviour
             startFlyExhaleTimer = true;
             isFlying = false;
             flyDelayTime = 0;
+            shoot.Fire();
         }
         else if (startFlyExhaleTimer)
         {
@@ -280,11 +313,50 @@ public class PlayerController : MonoBehaviour
         anim.SetBool("isFlying", isFlying);
         anim.SetBool("isInhaling", isInhalingTrans);
         anim.SetBool("isFlyExhaling", isFlyExhaling);
+        anim.SetBool("isFull", isFull);
+    }
+
+    public bool GetInvincibilityState()
+    {
+        return isInvincible;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        
+        if (collision.gameObject.CompareTag("Enemy") && !isInvincible)
+            currentHP--;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("EndOfLevel"))
+            isAtEndOfLevel = true;
+
+        if (collision.CompareTag("Radar"))
+        {
+            currentET = collision.GetComponentInParent<EnemyTurret>();
+            currentET.SetFireState(true);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Radar"))
+        {
+            currentET.SetFireState(false);
+            currentET.ResetTimer();
+            currentET = null;
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Radar"))
+        {
+            float angle = Mathf.Atan2(transform.position.y - collision.transform.position.y, transform.position.x - collision.transform.position.x);
+            currentET.setAnimStates(angle);
+            //Debug.Log("The angle is: " + angle.ToString());
+        }
     }
 
     private void GetAnimClipDurations()
@@ -325,5 +397,18 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(duration);
         isInvincible = false;
         invincibilityChange = null;
+    }
+
+    public void ResetPlayerStates()
+    {
+        isCrouching = false;
+        isSlideKicking = false;
+        isFlying = false;
+        isFlyingTrans = false;
+        isFlyExhaling = false;
+        isInhaling = false;
+        isInhalingTrans = false;
+        isFull = false;
+        isInvincible = false;
     }
 }

@@ -6371,9 +6371,9 @@ TextureImporter:
       name: Enemy_sprites_298
       rect:
         serializedVersion: 2
-        x: 0
+        x: 81
         y: 66
-        width: 97
+        width: 16
         height: 16
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -6536,7 +6536,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy_sprites_306
+      name: CanonSide
       rect:
         serializedVersion: 2
         x: 79
@@ -6557,7 +6557,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy_sprites_307
+      name: CanonAngle
       rect:
         serializedVersion: 2
         x: 99
@@ -6578,7 +6578,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy_sprites_308
+      name: CanonUp
       rect:
         serializedVersion: 2
         x: 119
@@ -6599,15 +6599,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy_sprites_309
+      name: Explode1
       rect:
         serializedVersion: 2
         x: 139
         y: 0
         width: 16
         height: 16
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -6620,15 +6620,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy_sprites_310
+      name: Explode2
       rect:
         serializedVersion: 2
         x: 159
         y: 0
         width: 16
         height: 16
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -6641,15 +6641,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy_sprites_311
+      name: Explode3
       rect:
         serializedVersion: 2
         x: 179
         y: 0
         width: 16
         height: 16
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -6662,15 +6662,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy_sprites_312
+      name: CanonBall
       rect:
         serializedVersion: 2
         x: 199
         y: 0
         width: 8
         height: 9
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -6714,6 +6714,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      CanonAngle: 1026096829
+      CanonBall: 1724586693
+      CanonSide: -1982831898
+      CanonUp: -4782760
       Enemy_sprites_0: 57409147
       Enemy_sprites_1: 2521112
       Enemy_sprites_10: -2102415618
@@ -6943,14 +6947,7 @@ TextureImporter:
       Enemy_sprites_303: 419482967
       Enemy_sprites_304: 891938367
       Enemy_sprites_305: -303413900
-      Enemy_sprites_306: -1982831898
-      Enemy_sprites_307: 1026096829
-      Enemy_sprites_308: -4782760
-      Enemy_sprites_309: 1679725823
       Enemy_sprites_31: -1950651406
-      Enemy_sprites_310: -387446010
-      Enemy_sprites_311: 400283590
-      Enemy_sprites_312: 1724586693
       Enemy_sprites_313: -1926631404
       Enemy_sprites_32: 55294502
       Enemy_sprites_33: 225915928
@@ -7026,6 +7023,9 @@ TextureImporter:
       Enemy_sprites_97: -591037305
       Enemy_sprites_98: 732576596
       Enemy_sprites_99: 1123182919
+      Explode1: 1679725823
+      Explode2: -387446010
+      Explode3: 400283590
       WaddleWalk1: 82545063
       WaddleWalk2: 1756382298
   mipmapLimitGroupName: 

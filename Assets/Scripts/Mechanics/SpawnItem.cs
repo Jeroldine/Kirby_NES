@@ -15,7 +15,7 @@ public class SpawnItem : MonoBehaviour
     void Start()
     {
         randomPickup = Random.Range(0, 5);
-        Debug.Log(randomPickup);
+        //Debug.Log(randomPickup);
         switch (randomPickup)
         {
             case 0:
