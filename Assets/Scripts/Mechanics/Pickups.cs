@@ -24,16 +24,16 @@ public class Pickups : MonoBehaviour
             switch (currentPickup)
             {
                 case PickupType.lives:
-                    pc.currentLives++;
+                    GameManager.Instance.currentLives++;
                     break;
                 case PickupType.hpFull:
-                    pc.currentHP += 6;
+                    GameManager.Instance.currentHP += 6;
                     break;
                 case PickupType.hpPortion:
-                    pc.currentHP += 2;
+                    GameManager.Instance.currentHP += 2;
                     break;
                 case PickupType.invincible:
-                    pc.StartInvincibilityChange(invincibilityDuration);
+                    collision.GetComponent<PlayerController>().StartInvincibilityChange(invincibilityDuration);
                     break;
             }
             Destroy(gameObject);

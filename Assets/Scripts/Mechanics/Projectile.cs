@@ -64,10 +64,9 @@ public class Projectile : MonoBehaviour
 
         else if (collision.CompareTag("Player") && gameObject.CompareTag("EnemyProjectile"))
         {
-            PlayerController playerCtrl = collision.GetComponent<PlayerController>();
-            if (!playerCtrl.GetInvincibilityState())
+            if (!collision.GetComponent<PlayerController>().GetInvincibilityState())
             {
-                playerCtrl.currentHP--;
+                GameManager.Instance.currentHP--;
                 Destroy(gameObject);
             }
         }

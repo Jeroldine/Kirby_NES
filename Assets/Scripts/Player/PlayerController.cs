@@ -24,37 +24,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float flyForce = 150.0f;
     [SerializeField] float extraGrav = 10.0f;
 
-    // Health and lives
-    int maxHP = 6;
-    private int _currentHP = 4;
-    public int currentHP
-    {
-        get { return _currentHP; }
-        set
-        {
-            _currentHP = value;
-            if (_currentHP > maxHP)
-                _currentHP = maxHP;
-
-            Debug.Log("HP has been set to: " + _currentHP.ToString());
-        }
-    }
-
-    int maxLives = 4;
-    private int _currentLives = 3;
-    public int currentLives
-    {
-        get { return _currentLives; }
-        set
-        {
-            _currentLives = value;
-            if (_currentLives > maxLives)
-                _currentLives = maxLives;
-
-            Debug.Log("Lives has been set to: " + _currentLives.ToString());
-        }
-    }
-
     // Ground inhaling mechanic
     [SerializeField] GameObject inhaleBoxPrefab;
     [SerializeField] Transform inhaleBoxR;
@@ -324,7 +293,7 @@ public class PlayerController : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Enemy") && !isInvincible)
-            currentHP--;
+            GameManager.Instance.currentHP--;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
