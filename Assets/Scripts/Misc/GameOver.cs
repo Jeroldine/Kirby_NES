@@ -13,6 +13,7 @@ public class GameOver : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+       Destroy(GameManager.Instance.playerInstance.gameObject);
        anim = GetComponent<Animator>();
        GetAnimClipDurations();
        GameManager.Instance.DisableInput(true, (pic1Duration + fadeDuration + pic2Duration));

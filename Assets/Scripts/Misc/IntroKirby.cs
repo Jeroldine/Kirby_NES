@@ -43,7 +43,8 @@ public class IntroKirby : MonoBehaviour
 
     public void GoToTitleScreen()
     {
-        GameManager.Instance.LoadLevel(1);
+        GameManager.Instance.currentSceneIndex++;
+        GameManager.Instance.LoadLevel(GameManager.Instance.currentSceneIndex);
     }
 
 }

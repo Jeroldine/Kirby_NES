@@ -105,6 +105,7 @@ public class PlayerController : MonoBehaviour
         }
 
         GetAnimClipDurations();
+        DontDestroyOnLoad(this);
     }
 
     // Update is called once per frame
@@ -156,9 +157,11 @@ public class PlayerController : MonoBehaviour
         }
 
         // leave level
-        if (isAtEndOfLevel && vInput > 0.1)
+        if (isAtEndOfLevel && !isSlideKicking && !isCrouching && vInput > 0.1)
         {
-            Debug.Log("You will leave the level when implemented.");
+            GameManager.Instance.currentSceneIndex++;
+            GameManager.Instance.LoadLevel(GameManager.Instance.currentSceneIndex);
+            //Debug.Log("You will leave the level when implemented.");
         }
 
         /// B button ///
@@ -265,7 +268,6 @@ public class PlayerController : MonoBehaviour
             Vector2 moveDirection = new Vector2(hInput * moveSpeed, rb.velocity.y);
             rb.velocity = moveDirection;
         }
-      
 
         // Flipping the sprite
         if (hInput > 0 && !isSlideKicking && !isInhaling)
@@ -316,6 +318,8 @@ public class PlayerController : MonoBehaviour
             currentET.ResetTimer();
             currentET = null;
         }
+        else if (collision.CompareTag("EndOfLevel"))
+            isAtEndOfLevel = false;
     }
 
     private void OnTriggerStay2D(Collider2D collision)

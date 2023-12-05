@@ -6,7 +6,8 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     static GameManager instance = null;
-    public static GameManager Instance => instance;    
+    public static GameManager Instance => instance;
+    int gameOverSceneIndex;
 
     [SerializeField] PlayerController playerPrefb;
     [HideInInspector] public PlayerController playerInstance;
@@ -53,14 +54,17 @@ public class GameManager : MonoBehaviour
         {
             if (value < 0)
             {
-                LoadLevel(3);
+                //Debug.Log("Line before loading to game over screen.");
+                LoadLevel(gameOverSceneIndex);
                 return;
             }
 
             if (_currentLives > value)
+            {
                 Debug.Log("Respawned");
-            Respawn();
-
+                Respawn();
+            }
+                
             _currentLives = value;
 
             if (_currentLives > maxLives)
@@ -91,6 +95,8 @@ public class GameManager : MonoBehaviour
         }
         instance = this;
         DontDestroyOnLoad(this);
+        gameOverSceneIndex = SceneManager.sceneCountInBuildSettings - 1;
+        Debug.Log("gameOverSceneIndex" + gameOverSceneIndex.ToString());
     }
 
     // Update is called once per frame
@@ -109,9 +115,10 @@ public class GameManager : MonoBehaviour
                 _currentSceneIndex++;
                 SceneManager.LoadScene(_currentSceneIndex);
             }
-                
+
             else if (SceneManager.GetActiveScene().name == "GameOver")
-                SceneManager.LoadScene(1);
+                _currentSceneIndex = 1;
+                SceneManager.LoadScene(_currentSceneIndex);
         }
 
         if (isInputDisabled)
@@ -124,7 +131,10 @@ public class GameManager : MonoBehaviour
 
     public void SpawnPlayer(Transform spawnLocation)
     {
-        playerInstance = Instantiate(playerPrefb, spawnLocation.position, spawnLocation.rotation);
+        if (!playerInstance)
+            playerInstance = Instantiate(playerPrefb, spawnLocation.position, spawnLocation.rotation);
+        else
+            playerInstance.transform.position = spawnLocation.position;
         spawnPoint = spawnLocation;
     }
 

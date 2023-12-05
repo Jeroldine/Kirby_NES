@@ -66,8 +66,8 @@ public class Projectile : MonoBehaviour
         {
             if (!collision.GetComponent<PlayerController>().GetInvincibilityState())
             {
-                GameManager.Instance.currentHP--;
                 Destroy(gameObject);
+                GameManager.Instance.currentHP--;
             }
         }
     }

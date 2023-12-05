@@ -12,8 +12,11 @@ EditorBuildSettings:
     path: Assets/Scenes/TitleScreen.unity
     guid: d6de2a2ab2eabf44a833d6f48031c4e1
   - enabled: 1
-    path: Assets/Scenes/VegetableValleyP1.unity
+    path: Assets/Scenes/VegetableValley1P1.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/VegetableValley1P2.unity
+    guid: 5401b0684c8bc3945a0ea90f1b55d8d7
   - enabled: 1
     path: Assets/Scenes/GameOver.unity
     guid: 1124ed95ab52f6341bed9167be935ba9
