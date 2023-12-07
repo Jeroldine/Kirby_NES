@@ -44,7 +44,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdb4c8652b33e6d48bcbbfc51359f91c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 1
-  maxLives: 3
+  OnHPValueChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  OnLivesValueChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  OnScoreValueChanged:
+    m_PersistentCalls:
+      m_Calls: []
   playerPrefb: {fileID: 5023750621868113910, guid: ec834f8ae9c36a346aff8ff81d8ede8e, type: 3}
   playerInstance: {fileID: 0}
+  maxHP: 6
+  maxLives: 99
+  maxScore: 9999999

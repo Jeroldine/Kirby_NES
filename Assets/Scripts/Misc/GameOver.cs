@@ -10,13 +10,21 @@ public class GameOver : MonoBehaviour
     float fadeDuration;
     float pic2Duration;
 
+    [SerializeField] GameObject gameOverMenu;
+
     // Start is called before the first frame update
     void Start()
     {
-       Destroy(GameManager.Instance.playerInstance.gameObject);
+       if (GameManager.Instance.playerInstance)
+            Destroy(GameManager.Instance.playerInstance.gameObject);
        anim = GetComponent<Animator>();
        GetAnimClipDurations();
        GameManager.Instance.DisableInput(true, (pic1Duration + fadeDuration + pic2Duration));
+    }
+
+    private void ShowGameOverOverMenu()
+    {
+        gameOverMenu.SetActive(true);
     }
 
     private void GetAnimClipDurations()

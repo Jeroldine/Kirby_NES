@@ -2,12 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 
+[DefaultExecutionOrder(-1)]
 public class GameManager : MonoBehaviour
 {
     static GameManager instance = null;
     public static GameManager Instance => instance;
     int gameOverSceneIndex;
+    public UnityEvent<int> OnHPValueChanged;
+    public UnityEvent<int> OnLivesValueChanged;
+    public UnityEvent<int> OnScoreValueChanged;
 
     [SerializeField] PlayerController playerPrefb;
     [HideInInspector] public PlayerController playerInstance;
@@ -27,6 +32,16 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private int _contSceneIndex;
+    public int contSceneIdex
+    {
+        get => _contSceneIndex;
+        set
+        {
+            _contSceneIndex = value;
+        }
+    }
+
     // Health and lives
     [SerializeField] int maxHP = 6;
     private int _currentHP = 4;
@@ -36,6 +51,8 @@ public class GameManager : MonoBehaviour
         set
         {
             _currentHP = value;
+            if (_currentHP > 0)
+                OnHPValueChanged?.Invoke(_currentHP);
             if (_currentHP > maxHP)
                 _currentHP = maxHP;
             else if (_currentHP <= 0)
@@ -45,7 +62,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    [SerializeField] int maxLives = 4;
+    [SerializeField] int maxLives = 99;
     private int _currentLives = 3;
     public int currentLives
     {
@@ -71,10 +88,12 @@ public class GameManager : MonoBehaviour
                 _currentLives = maxLives;
 
             Debug.Log("Lives has been set to: " + _currentLives.ToString());
+            OnLivesValueChanged?.Invoke(_currentLives);
         }
     }
 
-    // score
+    // score 
+    [SerializeField] int maxScore = 9999999;
     private int _currentScore = 0;
     public int currentScore
     {
@@ -82,6 +101,9 @@ public class GameManager : MonoBehaviour
         set
         {
             _currentScore = value;
+            if (_currentScore > maxScore)
+                _currentScore = maxScore;
+            OnScoreValueChanged?.Invoke(_currentScore);
         }
     }
 
@@ -96,7 +118,8 @@ public class GameManager : MonoBehaviour
         instance = this;
         DontDestroyOnLoad(this);
         gameOverSceneIndex = SceneManager.sceneCountInBuildSettings - 1;
-        Debug.Log("gameOverSceneIndex" + gameOverSceneIndex.ToString());
+        _currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        //Debug.Log("gameOverSceneIndex" + gameOverSceneIndex.ToString());
     }
 
     // Update is called once per frame
@@ -106,19 +129,18 @@ public class GameManager : MonoBehaviour
         {
             if (SceneManager.GetActiveScene().name == "Intro")
             {
-                _currentSceneIndex = 0;
-                _currentSceneIndex++;
-                SceneManager.LoadScene(_currentSceneIndex);
+                //_currentSceneIndex++;
+                SceneManager.LoadScene(++_currentSceneIndex);
             }
-            else if (SceneManager.GetActiveScene().name == "TitleScreen")
-            {
-                _currentSceneIndex++;
-                SceneManager.LoadScene(_currentSceneIndex);
-            }
+            //else if (SceneManager.GetActiveScene().name == "TitleScreen")
+            //{
+            //    _currentSceneIndex++;
+            //    SceneManager.LoadScene(_currentSceneIndex);
+            //}
 
-            else if (SceneManager.GetActiveScene().name == "GameOver")
-                _currentSceneIndex = 1;
-                SceneManager.LoadScene(_currentSceneIndex);
+            //else if (SceneManager.GetActiveScene().name == "GameOver")
+            //    _currentSceneIndex = 1;
+            //    SceneManager.LoadScene(_currentSceneIndex);
         }
 
         if (isInputDisabled)
@@ -129,12 +151,15 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void SpawnPlayer(Transform spawnLocation)
+    public void SpawnPlayer(Transform spawnLocation, int lvlSection)
     {
         if (!playerInstance)
             playerInstance = Instantiate(playerPrefb, spawnLocation.position, spawnLocation.rotation);
         else
             playerInstance.transform.position = spawnLocation.position;
+
+        if (lvlSection == 1)
+            _contSceneIndex = SceneManager.GetActiveScene().buildIndex;
         spawnPoint = spawnLocation;
     }
 

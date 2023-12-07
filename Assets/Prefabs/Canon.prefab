@@ -225,6 +225,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 1000
+  PuffDeathPoints: 1000
+  StarDeathPoints: 1000
+  playerCollidePoints: 1000
+  inhalePoints: 1000
   fireRate: 2
 --- !u!1 &3666127547377082593
 GameObject:

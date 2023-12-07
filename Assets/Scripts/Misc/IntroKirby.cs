@@ -15,12 +15,6 @@ public class IntroKirby : MonoBehaviour
         anim = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void DrawEyes()
     {
         faceAnim.SetTrigger("DrawEyes");
@@ -43,8 +37,8 @@ public class IntroKirby : MonoBehaviour
 
     public void GoToTitleScreen()
     {
-        GameManager.Instance.currentSceneIndex++;
-        GameManager.Instance.LoadLevel(GameManager.Instance.currentSceneIndex);
+        //GameManager.Instance.currentSceneIndex++;
+        GameManager.Instance.LoadLevel(++GameManager.Instance.currentSceneIndex);
     }
 
 }

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 098eb7456be9a0348ae0e12412c241d4
+guid: c1561a8b74154e4418e355488c56b3d5
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 23
+  spritePixelsToUnits: 24
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -69,7 +69,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 256
+    maxTextureSize: 1024
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -110,137 +110,74 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: MaxTomato
-      rect:
-        serializedVersion: 2
-        x: 1
-        y: 107
-        width: 14
-        height: 15
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 40a91092fdfea974faca51e04ad80655
-      internalID: -639007388
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: lifeUp
-      rect:
-        serializedVersion: 2
-        x: 24
-        y: 107
-        width: 16
-        height: 15
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 380fff834ec6dc64a81c53df1f608e3e
-      internalID: 120398200
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: KirbyItems_2
-      rect:
-        serializedVersion: 2
-        x: 41
-        y: 107
-        width: 16
-        height: 15
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 35c3a2c0a4b98d1478f3eeeefb8c15b6
-      internalID: -1479000839
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: bottle
-      rect:
-        serializedVersion: 2
-        x: 69
-        y: 107
-        width: 8
-        height: 16
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c70ee1927b9c4a84cb136e9ccfda7411
-      internalID: 2125764571
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Candy
-      rect:
-        serializedVersion: 2
-        x: 89
-        y: 107
-        width: 16
-        height: 16
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 059886f0fbb055a43902898f14719ce9
-      internalID: 1665300081
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: KirbyItems_5
-      rect:
-        serializedVersion: 2
-        x: 113
-        y: 91
-        width: 32
-        height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 89585ac1c04c3b14c962679ca3df1f8f
-      internalID: -203833502
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: KirbyItems_6
+      name: PauseMenuBackground
       rect:
         serializedVersion: 2
         x: 0
-        y: 90
+        y: 655
+        width: 248
+        height: 224
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a5b1eeb89968404ca2c7222722c8ee6
+      internalID: 504733207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PauseMenu_1
+      rect:
+        serializedVersion: 2
+        x: 253
+        y: 655
+        width: 248
+        height: 224
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 265f8d71e1acf2a4c92e3aa661669ac9
+      internalID: -2059241602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NormalMsg
+      rect:
+        serializedVersion: 2
+        x: 555
+        y: 710
+        width: 192
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db4077d206274c649941cd5536e1bd09
+      internalID: -1555571345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PauseMenu_3
+      rect:
+        serializedVersion: 2
+        x: 882
+        y: 755
         width: 16
         height: 16
       alignment: 7
@@ -250,62 +187,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ac8f168acfd54ed45bb431847748e74e
-      internalID: -1594911232
+      spriteID: 1e12748ab2ae1a74f8402bd6ff21ba81
+      internalID: 871005426
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KirbyItems_7
-      rect:
-        serializedVersion: 2
-        x: 24
-        y: 90
-        width: 16
-        height: 15
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e687107de524c9a48b2604be5e7d05e5
-      internalID: 1315402933
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: KirbyItems_8
-      rect:
-        serializedVersion: 2
-        x: 41
-        y: 90
-        width: 16
-        height: 15
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8b3917e468bd8f14194f01557f634b05
-      internalID: 1496352412
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: KirbyItems_9
+      name: PauseMenu_4
       rect:
         serializedVersion: 2
         x: 0
-        y: 73
-        width: 16
-        height: 16
+        y: 524
+        width: 192
+        height: 128
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -313,20 +208,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d0c580b3e42355340b59fa14d20b5023
-      internalID: -1365709534
+      spriteID: dc3fa9bbf6c372349b76b1504d7fd959
+      internalID: -1705877665
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KirbyItems_10
+      name: PauseMenu_5
       rect:
         serializedVersion: 2
-        x: 124
-        y: 66
-        width: 11
-        height: 16
+        x: 195
+        y: 524
+        width: 192
+        height: 128
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -334,20 +229,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e9f437cb82c66224eba740d612deb164
-      internalID: 1186171369
+      spriteID: d8639d2e23b37c644af2df3897dac1f8
+      internalID: 1666158662
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KirbyItems_11
+      name: PauseMenu_6
       rect:
         serializedVersion: 2
-        x: 154
-        y: 68
-        width: 16
-        height: 11
+        x: 390
+        y: 524
+        width: 192
+        height: 128
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -355,20 +250,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 909f8fa4cd7c4fe45bf2ac632311be97
-      internalID: 457397650
+      spriteID: 414547ea993b6b646b9edcc9cde3af08
+      internalID: 1456578015
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KirbyItems_12
+      name: PauseMenu_7
       rect:
         serializedVersion: 2
-        x: 189
-        y: 66
-        width: 11
-        height: 16
+        x: 585
+        y: 524
+        width: 192
+        height: 128
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -376,20 +271,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1fcccaba01dabca42b44c937addb4d26
-      internalID: -1807528731
+      spriteID: e441660adabff6c4ca95e1ce209166e7
+      internalID: -1589474411
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KirbyItems_13
+      name: PauseMenu_8
       rect:
         serializedVersion: 2
-        x: 220
-        y: 69
-        width: 16
-        height: 11
+        x: 780
+        y: 524
+        width: 192
+        height: 128
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -397,20 +292,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9bf93b9887e535a46b441fe2144b81e4
-      internalID: -1461231806
+      spriteID: dcf0bf285cf6d9b4fb1e622cfdc93c7b
+      internalID: -642284040
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KirbyItems_14
+      name: PauseMenu_9
       rect:
         serializedVersion: 2
         x: 0
-        y: 56
-        width: 16
-        height: 16
+        y: 393
+        width: 192
+        height: 128
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -418,20 +313,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 82a1f391523bb9a48b54c7abf3814642
-      internalID: -1780581374
+      spriteID: 8559216c208e3fd4191f2fba1499fcf8
+      internalID: -2134994298
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KirbyItems_15
+      name: PauseMenu_10
       rect:
         serializedVersion: 2
-        x: 122
-        y: 34
-        width: 14
-        height: 14
+        x: 195
+        y: 393
+        width: 192
+        height: 128
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -439,20 +334,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e3ab53e0d60e6504aa540280d7a5af9c
-      internalID: 2087794780
+      spriteID: 910eb38bd3a3bdf4d96ffb6e80ee6b98
+      internalID: -1726326839
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KirbyItems_16
+      name: PauseMenu_11
       rect:
         serializedVersion: 2
-        x: 155
-        y: 34
-        width: 14
-        height: 14
+        x: 390
+        y: 393
+        width: 192
+        height: 128
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -460,20 +355,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0e6eb4423990a5148b9374dd48faf8a5
-      internalID: 1642321575
+      spriteID: 6ec3dacc53425e142a1fd1dc07530ac7
+      internalID: -1806484439
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KirbyItems_17
+      name: PauseMenu_12
       rect:
         serializedVersion: 2
-        x: 188
-        y: 34
-        width: 14
-        height: 14
+        x: 585
+        y: 393
+        width: 192
+        height: 128
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -481,20 +376,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 12c9321efbb6aff45a618d85319c4dfa
-      internalID: 310253584
+      spriteID: 9dfdf0bff7e5bfa41ab24e6709c62ad2
+      internalID: 177915111
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KirbyItems_18
+      name: PauseMenu_13
       rect:
         serializedVersion: 2
-        x: 221
-        y: 34
-        width: 14
-        height: 14
+        x: 780
+        y: 393
+        width: 192
+        height: 128
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -502,20 +397,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 83134682d937c8c45921006ca43c75d0
-      internalID: -1087739442
+      spriteID: 60bdc0b7ad9880149b6ebc8e7ee10e11
+      internalID: -1590764418
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KirbyItems_19
+      name: PauseMenu_14
       rect:
         serializedVersion: 2
-        x: 121
-        y: 3
-        width: 16
-        height: 11
+        x: 0
+        y: 262
+        width: 192
+        height: 128
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -523,20 +418,209 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d581f73a8ce194849b88d3f02900785e
-      internalID: -1036409434
+      spriteID: d0226bbde3ca6b24bb2a7c985f04b28e
+      internalID: -883160283
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KirbyItems_20
+      name: PauseMenu_15
       rect:
         serializedVersion: 2
-        x: 157
+        x: 195
+        y: 262
+        width: 192
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e16eac94788265489b78f34c50b87ed
+      internalID: -367127677
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PauseMenu_16
+      rect:
+        serializedVersion: 2
+        x: 390
+        y: 262
+        width: 192
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e921fd8138e2a0f4e9214943fbe090d4
+      internalID: 1184665708
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PauseMenu_17
+      rect:
+        serializedVersion: 2
+        x: 585
+        y: 262
+        width: 192
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4d5f0ed5e549a040aaaf823758dc3d8
+      internalID: -784604458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PauseMenu_18
+      rect:
+        serializedVersion: 2
+        x: 780
+        y: 262
+        width: 192
+        height: 129
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86b59f666a1dd5d4e963a0db45bc45e5
+      internalID: 1223795132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PauseMenu_19
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 131
+        width: 192
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d25fd1f1af02b48448a8201fe17a0c89
+      internalID: 1357494761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PauseMenu_20
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 131
+        width: 192
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5cc494074ef9a6841b2e78a06eb5764b
+      internalID: 1715009334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PauseMenu_21
+      rect:
+        serializedVersion: 2
+        x: 390
+        y: 131
+        width: 192
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fce57263af9c49044b0a275c502254f9
+      internalID: 674003672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PauseMenu_22
+      rect:
+        serializedVersion: 2
+        x: 585
+        y: 131
+        width: 192
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88fa639be8edf4b498a32e390878ffca
+      internalID: 1089587835
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PauseMenu_23
+      rect:
+        serializedVersion: 2
+        x: 780
+        y: 131
+        width: 192
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad9de82cab206904a96fea365f607c2c
+      internalID: -913447905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PauseMenu_24
+      rect:
+        serializedVersion: 2
+        x: 0
         y: 0
-        width: 11
-        height: 16
+        width: 192
+        height: 128
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -544,41 +628,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: db6fb266178af5a469f2ee89365a7995
-      internalID: 2059357733
+      spriteID: a6be485c3e3156848ac6053fdde66a8f
+      internalID: -76202692
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KirbyItems_21
+      name: PauseMenu_25
       rect:
         serializedVersion: 2
-        x: 187
-        y: 2
-        width: 16
-        height: 11
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 95c37aa20fd68664aaab6af94c8bdf10
-      internalID: -454216229
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: KirbyItems_22
-      rect:
-        serializedVersion: 2
-        x: 222
+        x: 195
         y: 0
-        width: 11
-        height: 16
+        width: 192
+        height: 128
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -586,8 +649,71 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e20db52cf929e7b44928a14e1cf00955
-      internalID: -1051612436
+      spriteID: e510243d406a4c24db483669df8422bf
+      internalID: 1452529478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PauseMenu_26
+      rect:
+        serializedVersion: 2
+        x: 390
+        y: 0
+        width: 192
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b263eaa20da12354c876235c0929f14c
+      internalID: -59206813
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PauseMenu_27
+      rect:
+        serializedVersion: 2
+        x: 585
+        y: 0
+        width: 192
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d3083b5d4d5f074eae5f0456abfb683
+      internalID: -13686727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PauseMenu_28
+      rect:
+        serializedVersion: 2
+        x: 780
+        y: 0
+        width: 192
+        height: 128
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b37201ecf1da0f2468df737b1673128c
+      internalID: 2008761167
       vertices: []
       indices: 
       edges: []
@@ -603,29 +729,35 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Candy: 1665300081
-      KirbyItems_10: 1186171369
-      KirbyItems_11: 457397650
-      KirbyItems_12: -1807528731
-      KirbyItems_13: -1461231806
-      KirbyItems_14: -1780581374
-      KirbyItems_15: 2087794780
-      KirbyItems_16: 1642321575
-      KirbyItems_17: 310253584
-      KirbyItems_18: -1087739442
-      KirbyItems_19: -1036409434
-      KirbyItems_2: -1479000839
-      KirbyItems_20: 2059357733
-      KirbyItems_21: -454216229
-      KirbyItems_22: -1051612436
-      KirbyItems_5: -203833502
-      KirbyItems_6: -1594911232
-      KirbyItems_7: 1315402933
-      KirbyItems_8: 1496352412
-      KirbyItems_9: -1365709534
-      MaxTomato: -639007388
-      bottle: 2125764571
-      lifeUp: 120398200
+      NormalMsg: -1555571345
+      PauseMenuBackground: 504733207
+      PauseMenu_1: -2059241602
+      PauseMenu_10: -1726326839
+      PauseMenu_11: -1806484439
+      PauseMenu_12: 177915111
+      PauseMenu_13: -1590764418
+      PauseMenu_14: -883160283
+      PauseMenu_15: -367127677
+      PauseMenu_16: 1184665708
+      PauseMenu_17: -784604458
+      PauseMenu_18: 1223795132
+      PauseMenu_19: 1357494761
+      PauseMenu_20: 1715009334
+      PauseMenu_21: 674003672
+      PauseMenu_22: 1089587835
+      PauseMenu_23: -913447905
+      PauseMenu_24: -76202692
+      PauseMenu_25: 1452529478
+      PauseMenu_26: -59206813
+      PauseMenu_27: -13686727
+      PauseMenu_28: 2008761167
+      PauseMenu_3: 871005426
+      PauseMenu_4: -1705877665
+      PauseMenu_5: 1666158662
+      PauseMenu_6: 1456578015
+      PauseMenu_7: -1589474411
+      PauseMenu_8: -642284040
+      PauseMenu_9: -2134994298
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
