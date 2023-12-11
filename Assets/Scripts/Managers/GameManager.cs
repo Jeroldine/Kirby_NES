@@ -153,11 +153,11 @@ public class GameManager : MonoBehaviour
 
     public void SpawnPlayer(Transform spawnLocation, int lvlSection)
     {
-        if (!playerInstance)
-            playerInstance = Instantiate(playerPrefb, spawnLocation.position, spawnLocation.rotation);
-        else
-            playerInstance.transform.position = spawnLocation.position;
-
+        //if (!playerInstance)
+        //    playerInstance = Instantiate(playerPrefb, spawnLocation.position, spawnLocation.rotation);
+        //else
+        //    playerInstance.transform.position = spawnLocation.position;
+        playerInstance = Instantiate(playerPrefb, spawnLocation.position, spawnLocation.rotation);
         if (lvlSection == 1)
             _contSceneIndex = SceneManager.GetActiveScene().buildIndex;
         spawnPoint = spawnLocation;

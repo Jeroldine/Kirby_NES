@@ -263,7 +263,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pmRough: {fileID: 6200000, guid: 1596c2a51b8214246b6e0b5d7ba5235e, type: 2}
   pmSlippery: {fileID: 6200000, guid: b4b316bee5faab94c8ffb48500efc805, type: 2}
-  moveSpeed: 4
+  moveSpeed: 3
   jumpForce: 375
   flyForce: 2
   extraGrav: 125
@@ -304,7 +304,7 @@ MonoBehaviour:
   spawnPointR: {fileID: 5736432248695874068}
   spawnPointL: {fileID: 7160291942512240040}
   primaryProjectilePrefab: {fileID: 6954853117646274372, guid: fc6c60d9dda84704a9e8252c3c9299e9, type: 3}
-  secondaryProjectilePrefab: {fileID: 6954853117646274372, guid: fc6c60d9dda84704a9e8252c3c9299e9, type: 3}
+  secondaryProjectilePrefab: {fileID: 808502997147303987, guid: e627986c07dee8541a6428ccf7cfbc37, type: 3}
 --- !u!58 &4251529090812843328
 CircleCollider2D:
   m_ObjectHideFlags: 0

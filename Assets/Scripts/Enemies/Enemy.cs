@@ -14,8 +14,12 @@ public class Enemy : MonoBehaviour
     [SerializeField] int StarDeathPoints;
     [SerializeField] int playerCollidePoints;
     [SerializeField] int inhalePoints;
-
-
+    [SerializeField] protected float gainY;
+    [HideInInspector] public float inhaledSpeedX;
+    [HideInInspector] public float inhaledSpeedY = 0;
+    protected bool isInhaled;
+    protected bool isDead;
+    protected Transform followPos;
 
     public virtual void Start()
     {
@@ -25,6 +29,27 @@ public class Enemy : MonoBehaviour
         if (maxHealth <= 0)
             maxHealth = 10;
         health = maxHealth;
+        isInhaled = false;
+        isDead = false;
+    }
+
+    public bool GetInhaledState()
+    {
+        return isInhaled;
+    }
+    public void SetInhaledState(bool inhaled)
+    {
+        isInhaled = inhaled;
+    }
+
+    public void SetFollowPos(Transform fp)
+    {
+        followPos = fp;
+    }
+
+    public virtual void FollowKirby()
+    {
+        
     }
 
     public virtual void TakeDamage(int damage, int proj)

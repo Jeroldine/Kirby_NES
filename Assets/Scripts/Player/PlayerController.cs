@@ -105,7 +105,7 @@ public class PlayerController : MonoBehaviour
         }
 
         GetAnimClipDurations();
-        DontDestroyOnLoad(this);
+        //DontDestroyOnLoad(this);
     }
 
     // Update is called once per frame
@@ -130,7 +130,7 @@ public class PlayerController : MonoBehaviour
         {
             rb.AddForce(Vector2.up * jumpForce );
         }
-        else if ((!isGrounded || isFlying) && !isInhaling && Input.GetButton("Jump"))
+        else if ((!isGrounded || isFlying) && !isInhaling && !isFull && Input.GetButton("Jump"))
         {
             flyDelayTime += Time.deltaTime;
             if (flyDelayTime >= flyDelay)
@@ -140,13 +140,13 @@ public class PlayerController : MonoBehaviour
             }
             
         }
-        else if (!isGrounded && !Input.GetButtonDown("Jump"))
+        else if (!isGrounded && isFlying && !Input.GetButtonDown("Jump") && rb.velocity.y < -flyForce)
         {
-            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y);
+            rb.velocity = new Vector2(rb.velocity.x, Vector2.down.y * flyForce);
         }
 
         // Crouching
-        if (isGrounded && !isFlying && vInput < -0.1 && !isCrouching && !isInhaling)
+        if (isGrounded && !isFlying && vInput < -0.1 && !isCrouching && !isInhaling && !isFull)
         {
             isCrouching = true;
             //rb.velocity = Vector2.zero;
@@ -201,6 +201,12 @@ public class PlayerController : MonoBehaviour
             Destroy(ib, inhaleDelay);
             ib = null;
         }
+        else if (isFull && Input.GetButtonDown("Fire1")) // fire star projectile
+        {
+            shoot.Fire(1);
+            isFull = false;
+        }
+
         if (startInhaleTimer)
         {
             inhaleDelayTime += Time.deltaTime;
@@ -308,6 +314,12 @@ public class PlayerController : MonoBehaviour
             currentET = collision.GetComponentInParent<EnemyTurret>();
             currentET.SetFireState(true);
         }
+
+        if (collision.CompareTag("Enemy") && isInhaling)
+        {
+            isFull = true;
+            collision.GetComponent<Enemy>().TakeDamage(1, 3);
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -383,5 +395,10 @@ public class PlayerController : MonoBehaviour
         isInhalingTrans = false;
         isFull = false;
         isInvincible = false;
+    }
+
+    public bool GetInhalingState()
+    {
+        return isInhaling;
     }
 }
