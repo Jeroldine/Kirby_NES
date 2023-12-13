@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,9 +8,11 @@ public class Enemy : MonoBehaviour
 {
     protected SpriteRenderer sr;
     protected Animator anim;
+    protected event Action OnDeath;
     
     protected int health;
     public int maxHealth;
+    
     [SerializeField] int PuffDeathPoints;
     [SerializeField] int StarDeathPoints;
     [SerializeField] int playerCollidePoints;
@@ -58,6 +61,8 @@ public class Enemy : MonoBehaviour
 
         if (health <= 0)
         {
+            isDead = true;
+            OnDeath?.Invoke();
             switch (proj)
             {
                 case 0: // died from puff

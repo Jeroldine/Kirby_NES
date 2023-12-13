@@ -5,9 +5,10 @@ public class EnemyWalker : Enemy
 {
 
     Rigidbody2D rb;
+    AudioSourceManager asm;
 
     [SerializeField] float xSpeed;
-
+    [SerializeField] protected AudioClip deathSound;
 
     // Start is called before the first frame update
     public override void Start()
@@ -15,9 +16,18 @@ public class EnemyWalker : Enemy
         base.Start();
         rb = GetComponent<Rigidbody2D>();
         rb.sleepMode = RigidbodySleepMode2D.NeverSleep;
+        asm = GetComponent<AudioSourceManager>();
 
+        if (!asm) Debug.Log("AudioSourceManager script not attached.");
         if (xSpeed <= 0)
             xSpeed = 2;
+
+        OnDeath += EnemyDied;
+    }
+
+    private void EnemyDied()
+    {
+        asm.PlayOneShot(deathSound, false);
     }
 
     // Update is called once per frame

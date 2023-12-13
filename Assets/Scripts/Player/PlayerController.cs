@@ -11,8 +11,24 @@ public class PlayerController : MonoBehaviour
     Animator anim;
     EnemyTurret currentET;
     Shoot shoot;
+    AudioSourceManager asm;
 
     //AnimatorClipInfo[] currentClipInfo;
+
+    // audio clips
+    [SerializeField] AudioClip jumpSound;
+    [SerializeField] AudioClip landSound;
+    [SerializeField] AudioClip crouchSound;
+    [SerializeField] AudioClip slideKickSound;
+    [SerializeField] AudioClip inhaleSound;
+    [SerializeField] AudioClip swallowSound;
+    [SerializeField] AudioClip shootPuffSound;
+    [SerializeField] AudioClip shootStarSound;
+    [SerializeField] AudioClip damageSound;
+    [SerializeField] AudioClip invincibleSound;
+    bool hasSoundQueued = false;
+    double nextEventTime;
+    //[SerializeField] AudioClip deathSound;
 
     // Pysics Materials
     [SerializeField] PhysicsMaterial2D pmRough;
@@ -76,12 +92,15 @@ public class PlayerController : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
         shoot = GetComponent<Shoot>();
+        asm = GetComponent<AudioSourceManager>();
         ib = null;
 
         // checking variables for dirty data
         if (rb == null) Debug.Log("No RigidBody reference");
         if (sr == null) Debug.Log("No SpriteRenderer reference");
         if (anim == null) Debug.Log("No Animator reference");
+        if (shoot == null) Debug.Log("No Shoot script attached");
+        if (asm == null) Debug.Log("No AudioSourceManager script attached");
 
         if (moveSpeed <= 0)
         {
@@ -106,6 +125,8 @@ public class PlayerController : MonoBehaviour
 
         GetAnimClipDurations();
         //DontDestroyOnLoad(this);
+        shoot.OnPrimaryProjSpawn += OnPrimaryProjSpawned;
+        shoot.OnSecondaryProjSpawn += OnSecondaryProjSpawned;
     }
 
     // Update is called once per frame
@@ -129,6 +150,7 @@ public class PlayerController : MonoBehaviour
         if (isGrounded && !isCrouching && !isInhaling && !isFlying && Input.GetButtonDown("Jump"))
         {
             rb.AddForce(Vector2.up * jumpForce );
+            asm.PlayOneShot(jumpSound, false);
         }
         else if ((!isGrounded || isFlying) && !isInhaling && !isFull && Input.GetButton("Jump"))
         {
@@ -149,9 +171,10 @@ public class PlayerController : MonoBehaviour
         if (isGrounded && !isFlying && vInput < -0.1 && !isCrouching && !isInhaling && !isFull)
         {
             isCrouching = true;
+            asm.PlayOneShot(crouchSound, false);
             //rb.velocity = Vector2.zero;
         }
-        else if (isGrounded && vInput >= 0 && vInput < 0.1 && !isSlideKicking)
+        else if (isGrounded && vInput >= 0 && vInput < 0.1 && !isSlideKicking && isCrouching)
         {
             isCrouching = false;
         }
@@ -169,6 +192,8 @@ public class PlayerController : MonoBehaviour
         // inhale
         if (!isFlying && !isInhaling && !isCrouching && !isFull && Input.GetButtonDown("Fire1"))
         {
+            asm.PlayOneShot(inhaleSound, false);
+            nextEventTime = AudioSettings.dspTime + inhaleSound.length;
             isInhaling = true;
             isInhalingTrans = true;
             rb.velocity = Vector2.zero;
@@ -183,7 +208,16 @@ public class PlayerController : MonoBehaviour
                 ib.GetComponent<ibFollow>().SetFollowPos(inhaleBoxR);
             }   
         }
-        else if (isInhaling && Input.GetButtonUp("Fire1"))
+        else if (!isFull && isInhaling &&Input.GetButton("Fire1"))
+        {
+            if (AudioSettings.dspTime + (inhaleSound.length/2) >= nextEventTime)// && !hasSoundQueued)
+            {
+                //hasSoundQueued = true;
+                asm.PlayWithDelay(inhaleSound, false);
+                nextEventTime += inhaleSound.length / 2;
+            }
+        }
+        else if (!isFull && isInhaling && Input.GetButtonUp("Fire1"))
         {
             if (anim.GetCurrentAnimatorClipInfo(0)[0].clip.name == "Inhale")
             {
@@ -216,6 +250,7 @@ public class PlayerController : MonoBehaviour
                 startInhaleTimer = false;
                 inhaleDelay = 0;
                 inhaleDelayTime = 0;
+                asm.StopClip(inhaleSound);
             }
         }
         
@@ -245,6 +280,7 @@ public class PlayerController : MonoBehaviour
         if (isCrouching && Input.GetButtonDown("Fire1") && !isSlideKicking)
         {
             isSlideKicking = true;
+            asm.PlayOneShot(slideKickSound, false);
         }
 
         if (isSlideKicking)
@@ -293,6 +329,21 @@ public class PlayerController : MonoBehaviour
         anim.SetBool("isFull", isFull);
     }
 
+    private void OnPrimaryProjSpawned()
+    {
+        asm.PlayOneShot(shootPuffSound, false);
+    }
+
+    private void OnSecondaryProjSpawned()
+    {
+        asm.PlayOneShot(shootStarSound, false);
+    }
+
+    public void PlaySwallowSound()
+    {
+        asm.PlayOneShot(swallowSound, false);
+    }
+
     public bool GetInvincibilityState()
     {
         return isInvincible;
@@ -302,6 +353,8 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy") && !isInvincible)
             GameManager.Instance.currentHP--;
+        if (collision.gameObject.CompareTag("Level") && !isFlying && isGrounded)
+            asm.PlayOneShot(landSound, false);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -318,6 +371,10 @@ public class PlayerController : MonoBehaviour
         if (collision.CompareTag("Enemy") && isInhaling)
         {
             isFull = true;
+            startInhaleTimer = true;
+            isInhalingTrans = false;
+            asm.StopClip(inhaleSound);
+            asm.PlayOneShot(swallowSound, false);
             collision.GetComponent<Enemy>().TakeDamage(1, 3);
         }
     }

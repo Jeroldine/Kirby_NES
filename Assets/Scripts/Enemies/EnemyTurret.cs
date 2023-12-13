@@ -11,7 +11,11 @@ public class EnemyTurret : Enemy
     bool canFire;
 
     ShootTurret st;
+    AudioSourceManager asm;
+
     [SerializeField] float fireRate;
+
+    [SerializeField] AudioClip fireSound;
 
     float fireTimer = 0;
 
@@ -20,7 +24,19 @@ public class EnemyTurret : Enemy
     {
         base.Start();
         st = GetComponent<ShootTurret>();
+        asm = GetComponent<AudioSourceManager>();
+
+        if (!st) Debug.Log("ShootTurret script not attached.");
+        if (!asm) Debug.Log("AudioSourceManager script not attached");
+
         canFire = false;
+        st.OnPrimaryProjSpawn += OnProjectileSpawned;
+        st.OnProjSpawn += OnProjectileSpawned;
+    }
+
+    private void OnProjectileSpawned()
+    {
+        asm.PlayOneShot(fireSound, false);
     }
 
     // Update is called once per frame
@@ -43,7 +59,7 @@ public class EnemyTurret : Enemy
 
     public void setAnimStates(float angle) // angle in radians
     {
-        angle = (angle * 180) / Mathf.PI;
+        angle = (angle * 180) / Mathf.PI; // convert to degrees
         
         if ((angle > -90 && angle <= 0) || (angle > 0 && angle <= 15))
             SetFacingStates(true, false, false, false);

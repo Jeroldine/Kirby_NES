@@ -3,9 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Audio;
 
 public class CanvasManager : MonoBehaviour
 {
+    [SerializeField] AudioMixer audioMixer;
+    float masterVolBeforeMuted;
+
     [Header("Buttons")]
     [SerializeField] Button startButon;
     [SerializeField] Button settingsButton;
@@ -66,24 +70,47 @@ public class CanvasManager : MonoBehaviour
         if (masterVolSlider)
         {
             masterVolSlider.onValueChanged.AddListener((value) => UpdateMasterVolume(value));
+            float newValue;
+            audioMixer.GetFloat("masterVol", out newValue);
+            masterVolSlider.value = newValue + 80;
+            if (masterVolSlider.value > 0)
+            {
+                masterVolBeforeMuted = masterVolSlider.value;
+                Debug.Log("In Start: master vol before muted is " + masterVolBeforeMuted.ToString());
+            }
+
             if (masterVolSliderText)
-                masterVolSliderText.text = masterVolSlider.value.ToString();
+                masterVolSliderText.text = Mathf.Ceil(newValue + 80).ToString();
         }
         if (musicVolSlider)
         {
             musicVolSlider.onValueChanged.AddListener((value) => UpdateMusicVolume(value));
-            if (masterVolSliderText)
-                musicVolSliderText.text = musicVolSlider.value.ToString();
+            float newValue;
+            audioMixer.GetFloat("musicVol", out newValue);
+            musicVolSlider.value = newValue + 80;
+
+            if (musicVolSliderText)
+                musicVolSliderText.text = Mathf.Ceil(newValue + 80).ToString();
         }
         if (sfxVolSlider)
         {
             sfxVolSlider.onValueChanged.AddListener((value) => UpdateSFXVolume(value));
+            float newValue;
+            audioMixer.GetFloat("sfxVol", out newValue);
+            sfxVolSlider.value = newValue + 80;
+
             if (sfxVolSliderText)
-                sfxVolSliderText.text = sfxVolSlider.value.ToString();
+                sfxVolSliderText.text = Mathf.Ceil(newValue + 80).ToString();
         }
         if (muteToggle)
         {
-            muteToggle.onValueChanged.AddListener((value) => MuteVolume(value));
+            muteToggle.onValueChanged.AddListener((value) => UpdateMuteByToggle(value));
+
+            if (masterVolSlider)
+            {
+                muteToggle.isOn = masterVolSlider.value <= 0;
+                masterVolSlider.onValueChanged.AddListener((value) => UpdateMuteBySlider(value <= 0));
+            }    
         }
 
         // HUD
@@ -123,24 +150,48 @@ public class CanvasManager : MonoBehaviour
         }
     }
 
-    private void MuteVolume(bool value)
+    private void UpdateMuteByToggle(bool value)
     {
-        muteToggle.GetComponentInChildren<Text>().text = value ? "Muted" : "Not Muted";
+        if (value)
+        {
+            masterVolSlider.value = 0;
+            //UpdateMasterVolume(0);
+        }
+        else
+        {
+            masterVolSlider.value = masterVolBeforeMuted;
+            Debug.Log("In UpdateMuteByToggle: master vol before muted is " + masterVolBeforeMuted.ToString());
+            //UpdateMasterVolume(masterVolBeforeMuted);
+        }
+    }
+
+    private void UpdateMuteBySlider(bool value)
+    {
+        if (!value)
+        {
+            masterVolBeforeMuted = masterVolSlider.value;
+            Debug.Log("In UpdateMuteBySlider: master vol before muted is " + masterVolBeforeMuted.ToString());
+        }
+            
+        muteToggle.isOn = value;   
     }
 
     private void UpdateMasterVolume(float value)
     {
         masterVolSliderText.text = value.ToString();
+        audioMixer.SetFloat("masterVol", value - 80);
     }
 
     private void UpdateMusicVolume(float value)
     {
         musicVolSliderText.text = value.ToString();
+        audioMixer.SetFloat("musicVol", value - 80);
     }
 
     private void UpdateSFXVolume(float value)
     {
         sfxVolSliderText.text = value.ToString();
+        audioMixer.SetFloat("sfxVol", value - 80);
     }
 
 

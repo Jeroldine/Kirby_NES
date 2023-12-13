@@ -1,9 +1,13 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Shoot : MonoBehaviour
 {
+    public event Action OnPrimaryProjSpawn;
+    public event Action OnSecondaryProjSpawn;
+
     [SerializeField] protected float projectileForceX;
     [SerializeField] protected float projectileForceY;
 
@@ -45,6 +49,7 @@ public class Shoot : MonoBehaviour
                     curProjectile.GetComponent<Projectile>().xSpeed = -projectileForceX;
                     curProjectile.GetComponent<Projectile>().ySpeed = 0;
                 }
+                OnPrimaryProjSpawn?.Invoke();
                 break;
             case 1:
                 if (!sr.flipX)
@@ -60,8 +65,9 @@ public class Shoot : MonoBehaviour
                     curProjectile.GetComponent<Projectile>().xSpeed = -projectileForceX;
                     curProjectile.GetComponent<Projectile>().ySpeed = 0;
                 }
+                OnSecondaryProjSpawn?.Invoke();
                 break;
         }
+        
     }
-
 }

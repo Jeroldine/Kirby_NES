@@ -21,6 +21,10 @@ public class GameManager : MonoBehaviour
     float delayAmount = 0f;
     float delayTimer = 0f;
 
+    [SerializeField] AudioClip maxTomatoSound;
+    [SerializeField] AudioClip bottleSound;
+    [SerializeField] AudioClip lifeUpSound;
+
     // scene build index
     private int _currentSceneIndex;
     public int currentSceneIndex
