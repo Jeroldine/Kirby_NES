@@ -15,6 +15,7 @@ public class Projectile : MonoBehaviour
     [SerializeField] ProjectileType currentProjectile;
     [SerializeField] int damage;
     [SerializeField] float lifeTime;
+    [SerializeField] GameObject explosion;
 
     [HideInInspector]
     public float xSpeed;
@@ -42,8 +43,13 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Level"))
+        if (collision.CompareTag("Level") || collision.CompareTag("EnemyProjectile") || collision.CompareTag("PuffProjectile") || collision.CompareTag("StarProjectile"))
         {
+            if (gameObject.CompareTag("EnemyProjectile"))
+            {
+                GameObject explode = Instantiate(explosion, transform.position, transform.rotation);
+                Destroy(explode, 0.375f);
+            }
             Destroy(gameObject);
         }
 
@@ -66,8 +72,11 @@ public class Projectile : MonoBehaviour
         {
             if (!collision.GetComponent<PlayerController>().GetInvincibilityState())
             {
+                GameObject explode = Instantiate(explosion, transform.position, transform.rotation);
+                Destroy(explode, 0.375f);
                 Destroy(gameObject);
                 GameManager.Instance.currentHP--;
+                GameManager.Instance.playerInstance.KnockBack(transform);
             }
         }
     }

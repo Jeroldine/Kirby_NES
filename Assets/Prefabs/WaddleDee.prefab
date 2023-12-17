@@ -277,7 +277,7 @@ MonoBehaviour:
   StarDeathPoints: 400
   playerCollidePoints: 400
   inhalePoints: 200
-  gainY: 0
+  gainY: 0.06
   inhaledSpeedX: 2
   inhaledSpeedY: 0
   xSpeed: 2

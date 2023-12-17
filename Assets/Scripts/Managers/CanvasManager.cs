@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -142,6 +141,7 @@ public class CanvasManager : MonoBehaviour
             pauseMenu.SetActive(true);
             normalHUD.SetActive(false);
             Time.timeScale = 0;
+            GameManager.Instance.isPaused = true;
             //other stuff
         }
         else
@@ -256,6 +256,7 @@ public class CanvasManager : MonoBehaviour
     private void goToMainMenu()
     {
         Time.timeScale = 1;
+        GameManager.Instance.isPaused = false;
         GameManager.Instance.currentSceneIndex = 1;
         GameManager.Instance.LoadLevel(GameManager.Instance.currentSceneIndex);
     }
@@ -263,6 +264,7 @@ public class CanvasManager : MonoBehaviour
     private void ResumePlay()
     {
         Time.timeScale = 1;
+        GameManager.Instance.isPaused = false;
         pauseMenu.SetActive(false);
         normalHUD.SetActive(true);
         UpdateScore(GameManager.Instance.currentScore);

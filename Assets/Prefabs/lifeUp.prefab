@@ -135,3 +135,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentPickup: 0
   invincibilityDuration: 5
+  pickUpSound: {fileID: 8300000, guid: fc06ffe774d820040957b66cf66105d2, type: 3}

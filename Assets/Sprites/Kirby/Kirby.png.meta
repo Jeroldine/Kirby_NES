@@ -2294,12 +2294,12 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kirby_109
+      name: Kirby_Damaged
       rect:
         serializedVersion: 2
         x: 1
         y: 2689
-        width: 21
+        width: 16
         height: 16
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -2630,12 +2630,12 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kirby_125
+      name: Kirby_DamagedFull
       rect:
         serializedVersion: 2
         x: 1
         y: 2648
-        width: 29
+        width: 24
         height: 24
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -2903,7 +2903,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kirby_138
+      name: Kirby_Victory1
       rect:
         serializedVersion: 2
         x: 2
@@ -2924,7 +2924,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kirby_139
+      name: Kirby_Victory2
       rect:
         serializedVersion: 2
         x: 21
@@ -2945,7 +2945,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kirby_140
+      name: Kirby_Victory3
       rect:
         serializedVersion: 2
         x: 43
@@ -2966,7 +2966,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kirby_141
+      name: Kirby_Victory4
       rect:
         serializedVersion: 2
         x: 71
@@ -2987,7 +2987,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kirby_142
+      name: Kirby_Victory5
       rect:
         serializedVersion: 2
         x: 97
@@ -3008,7 +3008,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kirby_143
+      name: Kirby_Victory6
       rect:
         serializedVersion: 2
         x: 117
@@ -3029,12 +3029,12 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kirby_144
+      name: Kirby_Victory7
       rect:
         serializedVersion: 2
         x: 137
         y: 2623
-        width: 21
+        width: 16
         height: 16
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -3234,27 +3234,6 @@ TextureImporter:
       bones: []
       spriteID: 9ec1135479d3cee438154a29a7380702
       internalID: -417732481
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Kirby_154
-      rect:
-        serializedVersion: 2
-        x: 77
-        y: 2578
-        width: 21
-        height: 26
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 15b6defc5c70abe42a14e292338f6444
-      internalID: 1188882465
       vertices: []
       indices: 
       edges: []
@@ -4116,27 +4095,6 @@ TextureImporter:
       bones: []
       spriteID: 37e5ac51e26c2d643a7a379d919d3502
       internalID: 1574096471
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Kirby_217
-      rect:
-        serializedVersion: 2
-        x: 1
-        y: 2482
-        width: 5
-        height: 7
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: af69eab62b95afb4abaaef6507f0871f
-      internalID: 122103042
       vertices: []
       indices: 
       edges: []
@@ -16153,6 +16111,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Kirby_0
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 2578
+        width: 16
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6fd03fcf9ca3fa34c8ed86a07f826248
+      internalID: 1191461453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -16266,7 +16245,6 @@ TextureImporter:
       Kirby_1087: -27926846
       Kirby_1088: 908081998
       Kirby_1089: 1747873301
-      Kirby_109: -1026878955
       Kirby_1090: -2103418959
       Kirby_1091: 572320135
       Kirby_1092: -1767344985
@@ -16443,7 +16421,6 @@ TextureImporter:
       Kirby_1247: -1570611288
       Kirby_1248: 2070088572
       Kirby_1249: 1029715248
-      Kirby_125: 1143197779
       Kirby_1250: 521725466
       Kirby_1251: 3896417
       Kirby_1252: -1998382972
@@ -16586,7 +16563,6 @@ TextureImporter:
       Kirby_1377: -128713233
       Kirby_1378: -1452523233
       Kirby_1379: -1295486193
-      Kirby_138: 1671711758
       Kirby_1380: 1944993440
       Kirby_1381: -7164685
       Kirby_1382: -539739497
@@ -16596,12 +16572,6 @@ TextureImporter:
       Kirby_1386: -1994428721
       Kirby_1387: 1450432814
       Kirby_1388: -1031511448
-      Kirby_139: 1937455476
-      Kirby_140: -467357043
-      Kirby_141: -1262397979
-      Kirby_142: -1150348595
-      Kirby_143: 547804897
-      Kirby_144: -1785584537
       Kirby_145: 1752406863
       Kirby_146: 1841429921
       Kirby_147: -1707021122
@@ -17507,6 +17477,8 @@ TextureImporter:
       Kirby_998: -614603964
       Kirby_999: 73034613
       Kirby_Crouch: 1301268039
+      Kirby_Damaged: -1026878955
+      Kirby_DamagedFull: 1143197779
       Kirby_Dive: -1209785688
       Kirby_ExhaleFull1: -1049278862
       Kirby_ExhaleFull2: -1452044089
@@ -17533,6 +17505,13 @@ TextureImporter:
       Kirby_Liftoff3: 1336175012
       Kirby_Liftoff4: 1091025654
       Kirby_SlideKick: 2060026359
+      Kirby_Victory1: 1671711758
+      Kirby_Victory2: 1937455476
+      Kirby_Victory3: -467357043
+      Kirby_Victory4: -1262397979
+      Kirby_Victory5: -1150348595
+      Kirby_Victory6: 547804897
+      Kirby_Victory7: -1785584537
       Kirby_Walk1: -1239549367
       Kirby_Walk2: 1760552386
       Kirby_Walk3: -595757519

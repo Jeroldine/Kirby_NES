@@ -55,6 +55,10 @@ MonoBehaviour:
       m_Calls: []
   playerPrefb: {fileID: 5023750621868113910, guid: ec834f8ae9c36a346aff8ff81d8ede8e, type: 3}
   playerInstance: {fileID: 0}
+  maxTomatoSound: {fileID: 8300000, guid: 70b0e540401c7114ea974888e7ddde20, type: 3}
+  bottleSound: {fileID: 8300000, guid: c1e6859a24d46e14f8f6f6b168708443, type: 3}
+  lifeUpSound: {fileID: 8300000, guid: fc06ffe774d820040957b66cf66105d2, type: 3}
+  candySound: {fileID: 8300000, guid: e73e79b95fdf45445991394f3dda72ea, type: 3}
   maxHP: 6
   maxLives: 99
   maxScore: 9999999

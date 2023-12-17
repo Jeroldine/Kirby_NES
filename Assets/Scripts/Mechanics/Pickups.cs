@@ -14,6 +14,7 @@ public class Pickups : MonoBehaviour
 
     [SerializeField] PickupType currentPickup;
     [SerializeField] float invincibilityDuration = 5.0f;
+    [SerializeField] AudioClip pickUpSound;
 
     // Start is called before the first frame update
     private void OnTriggerEnter2D(Collider2D collision)
@@ -21,6 +22,7 @@ public class Pickups : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             PlayerController pc = collision.GetComponent<PlayerController>();
+            pc.PlayPickupSound(pickUpSound);
             switch (currentPickup)
             {
                 case PickupType.lives:
@@ -33,7 +35,7 @@ public class Pickups : MonoBehaviour
                     GameManager.Instance.currentHP += 2;
                     break;
                 case PickupType.invincible:
-                    collision.GetComponent<PlayerController>().StartInvincibilityChange(invincibilityDuration);
+                    pc.StartInvincibilityChange(invincibilityDuration);
                     break;
             }
             Destroy(gameObject);

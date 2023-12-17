@@ -21,9 +21,12 @@ public class GameManager : MonoBehaviour
     float delayAmount = 0f;
     float delayTimer = 0f;
 
-    [SerializeField] AudioClip maxTomatoSound;
-    [SerializeField] AudioClip bottleSound;
-    [SerializeField] AudioClip lifeUpSound;
+    bool _isPaused = false;
+    public bool isPaused
+    {
+        get => _isPaused;
+        set { _isPaused = value; }
+    }
 
     // scene build index
     private int _currentSceneIndex;
@@ -48,7 +51,7 @@ public class GameManager : MonoBehaviour
 
     // Health and lives
     [SerializeField] int maxHP = 6;
-    private int _currentHP = 4;
+    private int _currentHP = 6;
     public int currentHP
     {
         get { return _currentHP; }

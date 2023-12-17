@@ -5822,7 +5822,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy_sprites_272
+      name: BrontoBurt_Fly1
       rect:
         serializedVersion: 2
         x: 95
@@ -5843,7 +5843,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy_sprites_273
+      name: BrontoBurt_Fly2
       rect:
         serializedVersion: 2
         x: 115
@@ -6714,6 +6714,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      BrontoBurt_Fly1: -955264070
+      BrontoBurt_Fly2: -477975742
       CanonAngle: 1026096829
       CanonBall: 1724586693
       CanonSide: -1982831898
@@ -6909,8 +6911,6 @@ TextureImporter:
       Enemy_sprites_27: -1597156438
       Enemy_sprites_270: 1545337721
       Enemy_sprites_271: -1047560233
-      Enemy_sprites_272: -955264070
-      Enemy_sprites_273: -477975742
       Enemy_sprites_274: 1977311612
       Enemy_sprites_275: -125201676
       Enemy_sprites_276: 1861095585

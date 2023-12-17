@@ -5,6 +5,7 @@ using UnityEngine;
 public class ibFollow : MonoBehaviour
 {
     Transform followPos;
+    Transform playerPos;
     [SerializeField] float xSpeed;
 
     // Start is called before the first frame update
@@ -19,9 +20,10 @@ public class ibFollow : MonoBehaviour
         transform.position = followPos.position;
     }
 
-    public void SetFollowPos(Transform fp)
+    public void SetFollowPos(Transform fp, Transform pPos)
     {
         followPos = fp;
+        playerPos = pPos;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -35,12 +37,10 @@ public class ibFollow : MonoBehaviour
                 eRB.gravityScale = 0;
                 eRB.velocity = Vector2.zero;
                 Enemy e = collision.GetComponentInChildren<Enemy>();
-                e.SetFollowPos(followPos);
+                e.SetFollowPos(playerPos);
                 e.SetInhaledState(true);
-                if (followPos.position.x < e.transform.position.x)
-                    e.inhaledSpeedX = -xSpeed;
-                else
-                    e.inhaledSpeedX = xSpeed;
+                e.inhaledSpeedX = (playerPos.position.x < e.transform.position.x) ? -xSpeed : xSpeed;
+                Debug.Log(" playerPos X: " + playerPos.position.x.ToString() + "    Enemy X: " + e.transform.position.x.ToString());
             }
         }
     }

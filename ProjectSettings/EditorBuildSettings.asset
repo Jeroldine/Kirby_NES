@@ -18,6 +18,12 @@ EditorBuildSettings:
     path: Assets/Scenes/VegetableValley1P2.unity
     guid: 5401b0684c8bc3945a0ea90f1b55d8d7
   - enabled: 1
+    path: Assets/Scenes/VegetableValley1P3.unity
+    guid: 5877de85f82f53447aa3ee629d93054e
+  - enabled: 1
+    path: Assets/Scenes/WinScreen.unity
+    guid: 75210ce0b9e8e75419acafafb228078d
+  - enabled: 1
     path: Assets/Scenes/GameOver.unity
     guid: 1124ed95ab52f6341bed9167be935ba9
   m_configObjects: {}

@@ -297,7 +297,9 @@ MonoBehaviour:
   isInhalingTrans: 0
   isFull: 0
   flyDelay: 0.3
+  isDamaged: 0
   slideMoveSpeed: 6
+  knockbackForce: 6
 --- !u!114 &4083840380883230883
 MonoBehaviour:
   m_ObjectHideFlags: 0
